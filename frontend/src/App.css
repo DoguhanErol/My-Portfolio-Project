@@ -20,3 +20,24 @@ body {
   width: auto;
   font-family: "Teko", sans-serif;
 }
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0px 15px rgb(107, 103, 103);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(115, 222, 228);
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #262a5c;
+}

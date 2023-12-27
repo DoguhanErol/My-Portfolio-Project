@@ -1,21 +1,72 @@
 
+import { useQuery } from "@tanstack/react-query";
+//Fetchers
+import { fetchImages, fetchPrices, fetchProjects } from "../fetcher";
+//Types
+import { IImage, IPrice, IProject } from "../types";
+//Components
+import AboutMeShortComponent from "../components/home/AboutMeShortComponent"
+import GalleryShorts from "../components/home/GalleryShorts"
+import PricesComponent from "../components/home/PricesComponent"
+import ProjectsSliderComponent from "../components/home/ProjectsSliderComponent"
+import ErrorComponent from "../components/shared/ErrorComponent";
+import LoadingComponent from "../components/shared/LoadingComponent";
+
+//  '/'
 export default function HomePage() {
+  //Querys
+  const projectsData = useQuery<IProject[], Error, IProject[], ["projects"]>({
+    queryKey: ['projects'],
+    queryFn: fetchProjects,
+  });
+  const pricesData = useQuery<IPrice[], Error, IPrice[], ["prices"]>({
+    queryKey: ['prices'],
+    queryFn: fetchPrices,
+  });
+  const imagesData = useQuery<IImage[], Error, IImage[], ["images"]>({
+    queryKey: ['images'],
+    queryFn: fetchImages,
+  });
+  //Checks
+    if (projectsData.isLoading || pricesData.isLoading || imagesData.isLoading || projectsData.isRefetching || pricesData.isRefetching || imagesData.isRefetching) {
+      console.log('Loading...')
+      return <LoadingComponent />;
+    }
+  
+    if (projectsData.isError || pricesData.error || imagesData.isRefetching || typeof(projectsData.data) === 'undefined'|| typeof(pricesData.data) === 'undefined' || typeof(imagesData.data) === 'undefined') {
+      console.log('!!!Error: ',projectsData.error)
+      return  <ErrorComponent errorMessage="Error" />;
+    }
+
+  //Design
 return (
     <>
-    <section className='flex flex-col w-[89%] h-full text-5xl'>
-      <section  className='flex justify-center items-center rounded-md w-full my-4 shadow-2xl h-20  bg-slate-950 bg-opacity-80 animate-[fadeInDownBig_1.4s_ease]'>
-        <h2>"Yazar ağzını kapamalıdır ki eseri kendininkini açsın."<span className='text-4xl'>-Frederich Nietche</span> </h2>
+    <section className='flex flex-col w-[95%] lg:w-[89%] h-full -my-5 sm:my-12 '>
+      <section  className='flex justify-center items-center text-center rounded-md w-full my-4 shadow-2xl text-3xl lg:text-5xl lg:h-20  bg-slate-950 bg-opacity-80 animate-[fadeInDownBig_1.4s_ease]'>
+        <h2>"Yazar ağzını kapamalıdır ki eseri kendininkini açsın."<span className='text-2xl lg:text-4xl'>-Frederich Nietche</span> </h2>
       </section>
-      <section className='flex flex-row'>
-        <article className='flex flex-col w-[70%]'>
-        <h2 className='flex justify-center items-center rounded-md w-full my-4 shadow-2xl h-80 bg-slate-950 bg-opacity-80 animate-[slideInLeft_0.4s_ease]'>Galeri</h2>
-        <h2 className='flex justify-center items-center rounded-md w-full my-4 shadow-2xl h-80 bg-slate-950 bg-opacity-80 animate-[slideInLeft_0.6s_ease]'>Hakkimda</h2>
+      <section className='flex flex-col flex-wrap'>
+        <article className='flex flex-col w-full justify-center items-center  animate-[slideInLeft_0.7s_ease]'>
+          <ProjectsSliderComponent
+          Projects={projectsData.data}
+          />
         </article>
-        <article  className='flex  w-[30%]'>
-        <h2  className='flex justify-center items-center rounded-md w-full my-4 mx-4 shadow-2xl h-[42rem] bg-slate-950 bg-opacity-80 animate-[slideInUp_0.7s_ease]'>Projeler</h2>
+        <article className='flex flex-col w-auto justify-center items-center  '>
+          <AboutMeShortComponent />
+        </article>
+        <article className='flex flex-col w-auto justify-center items-center  '>
+          <PricesComponent
+          Prices={pricesData.data}
+          />
+        </article>
+        <article className='flex flex-col w-auto justify-center items-center  '>
+          <GalleryShorts
+          Images={imagesData.data}
+          />
         </article>
       </section>
     </section>
+    
     </>
   )
 }

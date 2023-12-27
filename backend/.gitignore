@@ -1,0 +1,30 @@
+# Virtual environment
+venv/
+__pycache__/
+
+# IDE
+.idea/
+
+# Compiled Python files
+*.pyc
+*.pyo
+__pycache__/
+
+# SQLite database file
+*.sqlite3
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Local settings
+local_settings.py
+
+# Media files
+media/
+
+# Static files
+staticfiles/
+
+# Environment variables file
+.env
