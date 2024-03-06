@@ -2,7 +2,7 @@ import 'animate.css'
 //Images
 import whatsappIcon from '../../assets/shared/whatsapp.png';
 //Types
-import { IWhatsappLink } from "./../../types";
+import { IWhatsappLink } from "../../Types";
 
 
 

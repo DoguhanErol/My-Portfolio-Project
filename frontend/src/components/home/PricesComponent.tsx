@@ -1,5 +1,5 @@
 //Types
-import { IPrice } from "./../../types";
+import { IPrice } from "../../Types";
 //Components
 import PriceCard from "./PriceCard";
 

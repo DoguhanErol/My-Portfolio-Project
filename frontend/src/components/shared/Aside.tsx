@@ -1,5 +1,5 @@
 import * as React from "react"
-import globalVariables from "../../globals"
+import globalVariables from "../../Config"
 import WhatsAppButton from "./WhatsAppButton"
 
 const Aside:React.FC = () => {

@@ -1,9 +1,9 @@
 
 import { useQuery } from "@tanstack/react-query";
 //Fetchers
-import { fetchImages, fetchPrices, fetchProjects } from "../fetcher";
+import { fetchImages, fetchPrices, fetchProjects } from "../Requests";
 //Types
-import { IImage, IPrice, IProject } from "../types";
+import { IImage, IPrice, IProject } from "../Types";
 //Components
 import AboutMeShortComponent from "../components/home/AboutMeShortComponent"
 import GalleryShorts from "../components/home/GalleryShorts"
