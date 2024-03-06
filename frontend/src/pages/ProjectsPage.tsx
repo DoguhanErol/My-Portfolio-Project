@@ -1,9 +1,9 @@
 import * as React from "react";
 import { useQuery } from '@tanstack/react-query';
 //Fetchers
-import { fetchProjects } from "../fetcher";
+import { fetchProjects } from "../Requests";
 //Types
-import {IProject} from '../types';
+import {IProject} from '../Types';
 //Components
 import LoadingComponent from "../components/shared/LoadingComponent";
 import ErrorComponent from "../components/shared/ErrorComponent";

@@ -2,7 +2,7 @@ import * as React from 'react';
 import 'animate.css'
 import { useEffect, useState } from 'react';
 //Types
-import  { IProject }  from '../../types';
+import  { IProject }  from '../../Types';
 // Components
 import ProjectCardComponent from './ProjectCardComponent';
 

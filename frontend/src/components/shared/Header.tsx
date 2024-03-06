@@ -10,7 +10,7 @@ import discordIcon from '../../assets/discord.png'
 import emailIcon from '../../assets/email.png'
 import navMenuIcon from '../../assets/navMenu.png'
 //Global Variables
-import globalVariables from '../../globals'
+import globalVariables from '../../Config'
 
 export default function Header() { 
     //Get Url

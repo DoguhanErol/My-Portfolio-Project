@@ -3,9 +3,9 @@ import * as React from 'react'
 import { useEffect,useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 //Fetchers
-import { fetchImages } from '../fetcher';
+import { fetchImages } from '../Requests';
 //Types
-import {IImage} from '../types'
+import {IImage} from '../Types'
 //Components
 import ImageDetail from '../components/gallery/ImageDetail';
 import ErrorComponent from '../components/shared/ErrorComponent';

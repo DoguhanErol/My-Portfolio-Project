@@ -1,6 +1,6 @@
 import axios from "axios";
-import {IProject, ITables,ITableContents , IImage, IPrice, IEducation, ICertificate} from './types';
-import globalVariables from "./globals";
+import {IProject, ITables,ITableContents , IImage, IPrice, IEducation, ICertificate} from './Types';
+import globalVariables from "./Config";
 
 // GET All Projects
 export  const fetchProjects = async ()  => {

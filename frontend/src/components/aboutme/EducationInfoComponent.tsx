@@ -1,6 +1,6 @@
 import * as React from "react";
 //Types
-import {IEducation} from '../../types';
+import {IEducation} from '../../Types';
 
 type TProps={
     Educations:IEducation[];

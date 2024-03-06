@@ -1,8 +1,8 @@
 import 'react'
 //Global Variables
-import globalVariables from '../../globals';
+import globalVariables from '../../Config';
 //Types
-import { IImage } from '../../types';
+import { IImage } from '../../Types';
 
 type TProps = {
   Image:IImage;

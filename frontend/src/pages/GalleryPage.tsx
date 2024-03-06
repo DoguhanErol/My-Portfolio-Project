@@ -1,12 +1,8 @@
 import 'react'
 import 'animate.css';
 import { useQuery } from '@tanstack/react-query';
-
-//Fetchers
-import { fetchImages } from '../fetcher';
-// Types
-import {IImage} from '../types';
-//Components
+import { fetchImages } from '../Requests';
+import {IImage} from '../Types';
 import ErrorComponent from './../components/shared/ErrorComponent';
 import LoadingComponent from './../components/shared/LoadingComponent';
 import ImageCard from './../components/gallery/ImageCard';
