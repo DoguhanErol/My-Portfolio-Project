@@ -22,12 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = ''  # Deleted for security
+SECRET_KEY = 'django-insecure-_2rk7d^+)lh@x42_m+t=#0$n632r1tx^bh3$p@_xa$ut^!o8*d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['backend.doguhanerol.dev']
+ALLOWED_HOSTS = ['*']
 
 # Set the default email sender
 DEFAULT_FROM_EMAIL = 'doguhan0erol@gmail.com'
@@ -42,6 +42,7 @@ EMAIL_HOST_PASSWORD = ''  # Deleted for security
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin', #New Admin Panel Library
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,6 +53,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',  # Auth yapmayi unutma
     'corsheaders',
     'api',
+    'Website',
+
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -95,11 +98,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '',  # Deleted for security
-        'USER': '',  # Deleted for security
-        'PASSWORD': '',  # Deleted for security
+        'NAME': 'PortfolioProjectDb',  # Deleted for security
+        'USER': 'postgres',  # Deleted for security
+        'PASSWORD': '12345',  # Deleted for security
         'HOST': 'localhost',
-        'PORT': ''  # Deleted for security
+        'PORT': '5432'  # Deleted for security
     }
 }
 
