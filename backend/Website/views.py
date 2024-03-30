@@ -8,70 +8,95 @@ from .models import *
 from .serializers import *
 
 
-class ContactInfoList(APIView):
-    def get(self, request):
-        contacts = Contact.objects.all()
-        serializer = ContactInfoSerializer(contacts, many=True)
-
-        return Response(serializer.data)
-
-
 class ProjectInfoList(APIView):
     def get(self, request):
-        projects = Project.objects.all()
-        serializer = ProjectInfoSerializer(projects, many=True)
-        return Response(serializer.data)
+        try:
+            projects = Project.objects.all()
+            serializer = ProjectInfoSerializer(projects, many=True)
+            return Response(serializer.data)
+        except Project.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
-
-class ProjectInfoDetail(APIView):
+class ProjectById(APIView):
     def get(self, request, pk):
-        project = get_object_or_404(
-            Project, pk=pk)
-        serializer = ProjectInfoSerializer(project)
-        return Response(serializer.data)
+        try:
+            project = get_object_or_404(Project, pk=pk)
+            project_images = ProjectImage.objects.filter(project_id=pk)
+            project_data = {
+                'project': ProjectInfoSerializer(project).data,
+                'images': ProjectImageSerializer(project_images, many=True).data
+            }
+            return Response(project_data)
+        except Project.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+class ProjectImages(APIView):
+    def get(self, request, pk):
+        try:
+            project_images = ProjectImage.objects.filter(project_id=pk)
+            serializer = ProjectImageSerializer(project_images, many=True)
+            return Response(serializer.data)
+        except ProjectImage.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 class EducationInfoList(APIView):
     def get(self, request):
-        educations = Education.objects.all()
-        serializer = EducationInfoSerializer(educations, many=True)
-        return Response(serializer.data)
-
+        try:
+            educations = Education.objects.all()
+            serializer = EducationInfoSerializer(educations, many=True)
+            return Response(serializer.data)
+        except Education.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 class CertificateInfoList(APIView):
     def get(self, request):
-        certificates = Certificate.objects.all()
-        serializer = CertificateInfoSerializer(certificates, many=True)
-        return Response(serializer.data)
-
+        try:
+            certificates = Certificate.objects.all()
+            serializer = CertificateInfoSerializer(certificates, many=True)
+            return Response(serializer.data)
+        except Certificate.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 class TableList(APIView):
     def get(self, request):
-        tables = Table.objects.all()
-        serializer = TableSerializer(tables, many=True)
-        return Response(serializer.data)
-
+        try:
+            tables = Table.objects.all()
+            serializer = TableSerializer(tables, many=True)
+            return Response(serializer.data)
+        except Table.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 class TableContentList(APIView):
     def get(self, request):
-        table_contents = TableContent.objects.all()
-        serializer = TableContentSerializer(table_contents, many=True)
-        return Response(serializer.data)
+        try:
+            table_contents = TableContent.objects.all()
+            serializer = TableContentSerializer(table_contents, many=True)
+            return Response(serializer.data)
+        except TableContent.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 class TableContentListId(APIView):
     def get(self, request, table_id):
-        table_contents = TableContent.objects.filter(
-            table_id=table_id)
-        serializer = TableContentSerializer(table_contents, many=True)
-        return Response(serializer.data)
+        try:
+            table_contents = TableContent.objects.filter(table_id=table_id)
+            serializer = TableContentSerializer(table_contents, many=True)
+            return Response(serializer.data)
+        except TableContent.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 class ImageList(APIView):
     def get(self, request):
-        images = GalleryImage.objects.all()
-        serializer = ImageSerializer(images, many=True)
-        return Response(serializer.data)
+        try:
+            images = GalleryImage.objects.all()
+            serializer = ImageSerializer(images, many=True)
+            return Response(serializer.data)
+        except GalleryImage.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
 
 
 # class ElectronicMail(APIView):
@@ -86,9 +111,11 @@ class ImageList(APIView):
 #         else:
 #             return Response({'error': 'Eksik veya hatalı veri.'}, status=status.HTTP_400_BAD_REQUEST)
 
-
 class PricesList(APIView):
     def get(self, request):
-        price = Price.objects.all()
-        serializer = PricesSerializer(price, many=True)
-        return Response(serializer.data)
+        try:
+            prices = Price.objects.all()
+            serializer = PricesSerializer(prices, many=True)
+            return Response(serializer.data)
+        except Price.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)

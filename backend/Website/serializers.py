@@ -6,18 +6,6 @@ from django.conf import settings
 from .models import *
 
 
-# Contacts
-class ContactInfoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Contact
-        fields = '__all__'
-
-
-class ContactInfoViewSet(viewsets.ModelViewSet):
-    queryset = Contact.objects.all()
-    serializer_class = ContactInfoSerializer
-    ordering = [Contact.contact_created_at]
-
 
 # Projects
 class ProjectInfoSerializer(serializers.ModelSerializer):
@@ -31,6 +19,10 @@ class ProjectInfoViewSet(viewsets.ModelViewSet):
     serializer_class = ProjectInfoSerializer
     ordering = [Project.project_created_at]
 
+class ProjectImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProjectImage
+        fields = '__all__'
 
 # Educations
 class EducationInfoSerializer(serializers.ModelSerializer):
