@@ -1,7 +1,7 @@
 //Globals
-import globalVariables from "../../globals";
+import globalVariables from "../../Config";
 //Types
-import { IProject } from "../../types"
+import { IProject } from "../../Types"
 
 
 type TProps = {

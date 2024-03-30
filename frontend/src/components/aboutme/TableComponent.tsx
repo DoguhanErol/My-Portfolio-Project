@@ -1,9 +1,9 @@
 //Types
-import {ITableContents} from "../../types";
-import {ITables} from '../../types'
+import {ITableContents} from "../../Types";
+import {ITables} from '../../Types'
 //Global Variables
 import { useQuery } from "@tanstack/react-query";
-import { fetchTableContent } from "../../fetcher";
+import { fetchTableContent } from "../../Requests";
 import LoadingComponent from "../shared/LoadingComponent";
 import ErrorComponent from "../shared/ErrorComponent";
 

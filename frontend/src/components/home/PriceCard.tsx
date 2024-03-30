@@ -1,6 +1,6 @@
 import * as React from 'react';
 //Types
-import { IPrice } from '../../types';
+import { IPrice } from '../../Types';
 
 type TProps ={
   price:IPrice;

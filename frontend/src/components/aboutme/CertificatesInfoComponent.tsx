@@ -1,6 +1,6 @@
 import * as React from "react";
 //Types
-import {ICertificate} from '../../types';
+import {ICertificate} from '../../Types';
 
 type TProps={
     Certificates:ICertificate[];

@@ -2,9 +2,9 @@ import { useQuery } from '@tanstack/react-query'
 import 'react'
 import 'animate.css';
 //Fetchers
-import { fetchCertificates, fetchEducations, fetchTables } from '../fetcher'
+import { fetchCertificates, fetchEducations, fetchTables } from '../Requests'
 //Types
-import {ICertificate, IEducation, ITables} from '../types';
+import {ICertificate, IEducation, ITables} from '../Types';
 //Components
 import AboutMeComponent from "../components/aboutme/AboutMeComponent"
 import CertificatesInfoComponent from "../components/aboutme/CertificatesInfoComponent"

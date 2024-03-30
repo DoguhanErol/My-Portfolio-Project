@@ -1,7 +1,5 @@
-//Globals
-import globalVariables from '../../globals';
-//Types
-import {IProject} from '../../types';
+import globalVariables from '../../Config';
+import {IProject} from '../../Types';
 
 type TProps = {
     Project:IProject;
@@ -28,8 +26,7 @@ const ProjectComponent:React.FC<TProps> =(props:TProps) => {
                 <h2 className='text-[#b4d7d9] ml-3 '>Proje Icerigi: <span className='ml-2 text-[#94B0B2]'>{props.Project.project_type}</span></h2>
                 </article>
                 <article className=''>
-                <h2 className='text-[#b4d7d9] ml-3'>Projede Kullanilan Front-End Teknolojiler: <span className='text-[#94B0B2]'>{props.Project.project_frontend_tecnologies}</span></h2>
-                <h2 className='text-[#b4d7d9] ml-3'>Projede Kullanilan Back-End Teknolojiler: <span className='text-[#94B0B2]'>{props.Project.project_backend_tecnologies}</span></h2>
+                <h2 className='text-[#b4d7d9] ml-3'>Projede Detayları: <span className='text-[#94B0B2]'>{props.Project.project_details}</span></h2>
                 </article>
             </section>
         </article>
