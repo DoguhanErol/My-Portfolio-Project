@@ -14,11 +14,15 @@ export interface IEducation{
 
 export interface IImage{
     image_id:number;
-    image_name?:string;
-    image_content?:string;
-    image_location?:string;
     image_path:string;
 }
+export interface IProjectImage{
+  id: number;
+  image: string;
+  created_at: string;
+  project: number;
+}
+
 
 export interface IProject{
     project_id:number;
@@ -31,7 +35,7 @@ export interface IProject{
     project_live_url?: string;
     project_github_url?: string;
     project_details?: string;
-    project_image_path?: string; 
+    project_image_path: string;
 }
 
 export interface ITableContents{
@@ -46,25 +50,14 @@ export interface ITables{
     table_title:string;
   }
 
-export interface IMail{
-    mail_first_name:string;
-    mail_last_name:string;
-    mail_address:string;
-    city:string;
-    mail_message:string;
-}
-export interface IWhatsappLink{
-  wpLink:string
-}
-
 export interface IPrice{
   price_id:number;
   price_title:String;
   price_type:String;
   price_price:number;
-  price_sub_content_1:String;
-  price_sub_content_2:String;
-  price_sub_content_3:String;
-  price_sub_content_4:String;
-  price_sub_content_5:String;
+  price_sub_content_1?:String;
+  price_sub_content_2?:String;
+  price_sub_content_3?:String;
+  price_sub_content_4?:String;
+  price_sub_content_5?:String;
 }

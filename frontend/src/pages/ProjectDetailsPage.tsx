@@ -10,6 +10,7 @@ import  {IProject}  from '../Types';
 //Components
 import ErrorComponent from '../components/shared/ErrorComponent';
 import LoadingComponent from '../components/shared/LoadingComponent';
+import ProjectCarousel from '../components/project/ProjectCarousel';
 
 //  '/projeler/{id}'
 const  ProjectDetailsPage:React.FC = () => {
@@ -27,37 +28,39 @@ const  ProjectDetailsPage:React.FC = () => {
     queryFn:() => fetchProject(strId),
   });
 
-  //Checks
-  if (projectData.isLoading || projectData.isRefetching) {
+
+  //Error Handling
+  // problem surda !projectData.data.project_name react query nasil calisir iyice ogren oyle gel
+  if (projectData.isLoading || projectData.isRefetching || !projectData.data || !projectData.data.project_name) {
     console.log('Loading...');
-    console.log('--Status--', '--' + status + '--');
     return <LoadingComponent />;
   }
 
-  if (projectData.isError ) {
+  if (projectData.isError || !projectData.data  ) {
     console.log('!!!Error: ', projectData.error);
     console.log('--Status--', '--' + projectData.status + '--');
     return <ErrorComponent errorMessage="Error" />;
   }
- 
 
+
+  
 //Design
     return (
       <>
- 
+
             <article className='flex flex-col  rounded-md w-[95%] shadow-2xl h-auto z-20 bg-slate-950 bg-opacity-80 animate-[backInLeft_0.5s] sm:my-16'>
                 <section className=' flex self-center justify-center w-full  h-full bg-gray-900'>
-                    <figure className='max-w-3xl h-auto'>
-                        <img src={globalVariables.baseUrl+ projectData.data?.project_image_path } alt="Project Image" className='h-full' />
-                    </figure>
+                    {/* <ProjectCarousel 
+                    project={projectData.data}
+                    />  */}
                 </section>
             </article>
             <article className='flex flex-col  rounded-md w-[95%] shadow-2xl h-auto z-20 bg-slate-950 bg-opacity-80 animate-[backInDown_0.8s_ease] my-3'>
             <section className='flex flex-col  text-xl md:text-3xl  w-full '>
                     <article className='flex flex-row bg-slate-600 w-full'>
-                        <h2 className='text-[#b4d7d9] ml-3'>Proje Adi: <span className='ml-2 text-[#94B0B2]'>{projectData.data?.project_name}</span></h2>
+                        <h2 className='text-[#b4d7d9] ml-3'>Proje Adi: <span className='ml-2 text-[#94B0B2]'>{projectData.data.project_name}</span></h2>
                     </article>
-
+{/* 
                     <article className='flex flex-row '>
                         <h2 className='text-[#b4d7d9] ml-3'>Proje Turu: <span className='ml-2 text-[#94B0B2]'>{projectData.data?.project_type}</span></h2>
                     </article>
@@ -91,7 +94,7 @@ const  ProjectDetailsPage:React.FC = () => {
                     <article className='flex justify-center items-center md:justify-end md:items-end m-4  md:m-6 h-full text-2xl md:text-3xl'>
                         <a href={projectData.data?.project_live_url} className='px-2 md:px-5 py-1  font-medium border rounded text-[#b4d7d9] ml-3 md:ml-6 hover:text-[#cdf9fc] w-auto h-auto hover:scale-105'>Projeye Git</a>
                         <a href={projectData.data?.project_github_url}className='px-2 md:px-5 py-1  font-medium border rounded text-[#b4d7d9] ml-3 md:ml-6 hover:text-[#cdf9fc] w-auto h-auto hover:scale-105'>Proje Koduna Git</a>
-                    </article>
+                    </article> */}
 
 
                 </section>

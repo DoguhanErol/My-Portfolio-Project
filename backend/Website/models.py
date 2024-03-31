@@ -23,7 +23,7 @@ class Project(models.Model):
     project_live_url = models.CharField(max_length=150, null=True, verbose_name='Canlı URL')
     project_github_url = models.CharField(max_length=150, null=True, verbose_name='GitHub URL')
     project_details = models.TextField(max_length=400, null=True, verbose_name='Detaylar')
-    project_image_path = models.ImageField(upload_to='projects/', null=True, verbose_name='Resim Yolu')
+    project_image_path = models.ImageField(upload_to='projects/', null=False, verbose_name='Resim Yolu')
     project_created_at = models.DateTimeField(auto_now_add=True, verbose_name='Oluşturulma Tarihi')
 
     def __str__(self):

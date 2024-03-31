@@ -10,7 +10,6 @@ import AboutMeComponent from "../components/aboutme/AboutMeComponent"
 import CertificatesInfoComponent from "../components/aboutme/CertificatesInfoComponent"
 import EducationInfoComponent from "../components/aboutme/EducationInfoComponent"
 import TablesComponent from "../components/aboutme/TableComponent"
-import PictureComponent from "../components/aboutme/PictureComponent"
 import ErrorComponent from '../components/shared/ErrorComponent'
 import LoadingComponent from '../components/shared/LoadingComponent'
 
@@ -44,35 +43,29 @@ export default function AboutMePage() {
   //Design
   return (
     <>
-        <section className='flex flex-col items-center justify-center lg:w-full -my-5 sm:my-16 animate-[fadeInUpBig_0.8s]'>
+        <section className='grid grid-cols-1 gap-3 animate-[fadeInUpBig_0.8s] mt-0 sm:mt-16'>
+          {/* Picture and about me text */}
+          <section className=' m-5  p-1 xs:p-5 rounded-lg bg-slate-950 bg-opacity-80 '>
+            <AboutMeComponent />
+          </section>
+          {/* Education and certificates */}
+          <section className='grid grid-cols-2 gap-1 m-5 rounded-lg'>
+            <EducationInfoComponent
+            Educations={educationData.data}
+            />
+            <CertificatesInfoComponent 
+            Certificates={certificatesData.data}
+            />
 
-        <section className="flex flex-col items-center  justify-center lg:w-full">
-          <article className='flex flex-col items-center justify-start lg:w-full lg:justify-evenly lg:items-center lg:flex-row'>
-              <PictureComponent />
-              <AboutMeComponent />
-            </article>
-        </section>
+          </section>
+          {/* Tech Stack */}
+          <section>
 
-         <section className="flex flex-col justify-center items-center lg:justify-evenly lg:items-start lg:w-full lg:flex-row ">
-            <article className="flex flex-col justify-center items-center lg:w-[35%] lg:flex-col">
-            {tableData.data && tableData.data.length > 0  && tableData.data.map((table) => (
-               <TablesComponent
-               Tables={table}
-               />
-            ))}
-             </article>
+          </section>
+          {/* Tables */}
+          <section>
 
-             <article className="flex flex-col justify-center items-center lg:w-[60%] lg:flex-col">
-               <EducationInfoComponent
-               Educations={educationData.data}
-               />
-               <CertificatesInfoComponent
-               Certificates ={certificatesData.data}
-               />
-             </article>
-
-         </section>
-
+          </section>
         </section>
     </>
   )

@@ -1,5 +1,5 @@
 import axios from "axios";
-import {IProject, ITables,ITableContents , IImage, IPrice, IEducation, ICertificate} from './Types';
+import {IProject, ITables,ITableContents , IImage, IPrice, IEducation, ICertificate, IProjectImage} from './Types';
 import globalVariables from "./Config";
 
 // GET All Projects
@@ -18,6 +18,15 @@ export  const fetchProject  = async (id: string)  => {
     const project: IProject = response.data;
     console.log('Project: ', project);
     return project
+};
+
+// GET Project Images By Project Id
+export  const fetchProjectImages  = async (id: string)  => {
+    console.log('Fetching Projects Data ...');
+    const response = await axios.get<IProjectImage[]>(globalVariables.baseUrlApi+'projects/'+id+'/images/');
+    const projectImages: IProjectImage[] = response.data;
+    console.log('Project Images: ', projectImages);
+    return projectImages
 };
 
 //GET Tables

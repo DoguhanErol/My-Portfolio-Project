@@ -23,9 +23,9 @@ const GalleryShorts:React.FC<TProps> = (props:TProps) => {
           </div>
           <p className=" text-center text-2xl w-full leading-relaxed text-gray-400 text-opacity-90">Galeride son yüklenen fotoraflar</p>
         </div>
-        <div className="flex flex-wrap justify-center  -m-4">
+        <div className="grid grid-cols-3 gap-1">
             {/* Image Cards */}
-        {props.Images && props.Images.length > 0  && props.Images.slice(0,5).map((image, index) => (
+        {props.Images && props.Images.length > 0  && props.Images.slice(0,6).map((image, index) => (
           <GalleryCard
           key={index}
           Image={image}
