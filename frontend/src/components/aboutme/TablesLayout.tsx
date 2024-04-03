@@ -26,6 +26,7 @@ const TablesLayout:React.FC = () => {
         return  <ErrorComponent errorMessage="Error" />;
       }
 
+
   return (
     <>
      {tableData.data && tableData.data.length > 0  && tableData.data.map((table) => (

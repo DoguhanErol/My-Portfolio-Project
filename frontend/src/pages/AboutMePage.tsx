@@ -13,6 +13,7 @@ import TablesComponent from "../components/aboutme/TableComponent"
 import ErrorComponent from '../components/shared/ErrorComponent'
 import LoadingComponent from '../components/shared/LoadingComponent'
 import TablesLayout from '../components/aboutme/TablesLayout';
+import TechStackLayout from '../components/aboutme/TechStackLayout';
 
 //  '/hakkimda'
 export default function AboutMePage() {
@@ -54,16 +55,19 @@ export default function AboutMePage() {
             <CertificatesInfoComponent 
             Certificates={certificatesData.data}
             />
-
           </section>
+
           {/* Tech Stack */}
-          <section>
-
+          <section className="m-5  rounded-lg text-gray-400 bg-slate-950 bg-opacity-80  body-font">
+            <h1 className="text-2xl sm:text-4xl font-semibold m-10 text-gray-100">Teknoloji Yığınım</h1>
+            <TechStackLayout />
           </section>
+
           {/* Tables */}
           <section className='grid grid-cols-1 xs:flex xs:justify-center gap-3 m-5 flex-wrap'>
             <TablesLayout />
           </section>
+          
         </section>
     </>
   )
