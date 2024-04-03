@@ -30,6 +30,9 @@ class TableContentAdmin(admin.ModelAdmin):
 class TableAdmin(admin.ModelAdmin):
     list_display = ('table_title', 'table_created_at')
 
+class TechStackCategoryAdmin(admin.ModelAdmin):
+    list_display = ('tech_stack_category_id', 'tech_stack_category_title')
+
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(ProjectImage,ProjectImagesAdmin)
 admin.site.register(Education, EducationAdmin)
@@ -39,6 +42,7 @@ admin.site.register(TableContent,TableContentAdmin)
 admin.site.register(GalleryImage, GalleryImageAdmin)
 admin.site.register(ElectronicMail)
 admin.site.register(Price, PriceAdmin)
+admin.site.register(TechStackCategory, TechStackCategoryAdmin)
 
 
 # Register your models here.

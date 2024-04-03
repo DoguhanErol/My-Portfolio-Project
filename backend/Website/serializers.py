@@ -126,3 +126,11 @@ class PricesViewSet(viewsets.ModelViewSet):
     queryset = Price.objects.all()
     serializer_class = PricesSerializer
     ordering = [Price.price_created_at]
+
+
+
+#Tech Stack
+class TechStackCategoriesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TechStackCategory
+        fields = '__all__'

@@ -180,4 +180,28 @@ class Price(models.Model):
         return 'Fiyat Tablo Adı: ' + self.price_title + ' - Fiyatı: ' + str(self.price_price)
 
 
+class TechStackCategory(models.Model):
+    class Meta:
+        verbose_name = 'Teknoloji Yığını Kategorisi'
+        verbose_name_plural = 'Teknoloji Yığını Kategorileri'
+
+    tech_stack_category_id = models.AutoField(primary_key=True, verbose_name='Teknoloji Yığını Kategorisi ID')
+    tech_stack_category_title = models.CharField(max_length=30, null=False, verbose_name='Kategori Adı')
+
+
+class TechStack(models.Model):
+    class Meta:
+        verbose_name = 'Teknoloji Yığını'
+        verbose_name_plural = 'Teknoloji Yığınları'
+
+    tech_stack_id = models.AutoField(primary_key=True, verbose_name='Teknoloji Yığını ID')
+    tech_stack_title = models.CharField(max_length=30, null=False, verbose_name='Başlığı')
+    tech_stack_info = models.CharField(max_length=30, null=True, verbose_name='Alt Bilgi')
+    tech_stack_image_path = models.ImageField(upload_to='techstacks/', null=False, verbose_name='Resim Yolu')
+    
+    # İkincil anahtar (foreign key) ilişkisi
+    tech_stack_category = models.ForeignKey(TechStackCategory, on_delete=models.CASCADE, related_name='tech_stacks')
+
+
+
 # -Tum tablolari dogru duzgun bir sekilde ORM yapman lazim

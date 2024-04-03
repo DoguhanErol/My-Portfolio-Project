@@ -99,6 +99,7 @@ class ImageList(APIView):
         
 
 
+
 # class ElectronicMail(APIView):
 #     def post(self, request):
 #         mail_data = request.data
@@ -118,4 +119,14 @@ class PricesList(APIView):
             serializer = PricesSerializer(prices, many=True)
             return Response(serializer.data)
         except Price.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+class TechStackCategories(APIView):
+    def get(self, request):
+        try:
+            techstackcategories = TechStackCategory.objects.all()
+            serializer = TechStackCategoriesSerializer(techstackcategories, many=True)
+            return Response(serializer.data)
+        except TechStackCategory.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)

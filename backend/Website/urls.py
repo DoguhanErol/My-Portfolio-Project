@@ -6,6 +6,10 @@ urlpatterns = [
     path('projects/<int:pk>/', ProjectById.as_view(), name='project-detail'),
      path('projects/<int:pk>/images/', ProjectImages.as_view(), name='project_images'),
 
+
+     path('techstackcategories/', TechStackCategories.as_view(), name='tech-stack-categories'),
+
+
     path('educations/', EducationInfoList.as_view(), name='education-list'),
     path('certificates/', CertificateInfoList.as_view(),
          name='certificate-list'),
