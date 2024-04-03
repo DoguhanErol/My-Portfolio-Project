@@ -12,14 +12,12 @@ import EducationInfoComponent from "../components/aboutme/EducationInfoComponent
 import TablesComponent from "../components/aboutme/TableComponent"
 import ErrorComponent from '../components/shared/ErrorComponent'
 import LoadingComponent from '../components/shared/LoadingComponent'
+import TablesLayout from '../components/aboutme/TablesLayout';
 
 //  '/hakkimda'
 export default function AboutMePage() {
   //Querys
-  const tableData = useQuery<ITables[], Error, ITables[], ["tables"]>({
-    queryKey: ['tables'],
-    queryFn: fetchTables,
-  });
+
   const educationData = useQuery<IEducation[], Error, IEducation[], ["educations"]>({
     queryKey: ['educations'],
     queryFn: fetchEducations,
@@ -30,13 +28,13 @@ export default function AboutMePage() {
   });
 
   //Checks
-  if (tableData.isLoading || tableData.isRefetching || educationData.isLoading || certificatesData.isLoading) {
+  if (educationData.isLoading || certificatesData.isLoading) {
     console.log('Loading...')
     return <LoadingComponent />;
   }
 
-  if (tableData.isError || educationData.isError || certificatesData.isError  || typeof(certificatesData.data) === 'undefined' || typeof(educationData.data) === 'undefined') {
-    console.log('!!!Error: ',tableData.error || educationData.error || certificatesData.error)
+  if (certificatesData.isError  || typeof(certificatesData.data) === 'undefined' || typeof(educationData.data) === 'undefined') {
+    console.log('!!!Error: ',educationData.error || certificatesData.error)
     return  <ErrorComponent errorMessage="Error" />;
   }
 
@@ -63,8 +61,8 @@ export default function AboutMePage() {
 
           </section>
           {/* Tables */}
-          <section>
-
+          <section className='grid grid-cols-1 xs:flex xs:justify-center gap-3 m-5 flex-wrap'>
+            <TablesLayout />
           </section>
         </section>
     </>
