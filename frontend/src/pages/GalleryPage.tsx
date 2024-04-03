@@ -31,7 +31,7 @@ const GalleryPage:React.FC = () => {
   return (
     <>
     {/*Normal Image Gallery*/}
-    <section className='flex flex-row flex-wrap center items-center justify-center my-1 sm:my-16 animate-[fadeInUpBig_0.8s]'>
+    <section className='grid grid-cols-3 gap-1 m-2 sm:my-20 animate-[fadeInUpBig_0.8s]'>
     {data && data.length > 0  && data.map((galleryImage, index) => (
           <ImageCard
           Image={galleryImage}

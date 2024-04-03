@@ -33,7 +33,7 @@ const TableComponent:React.FC<TProps> = (props:TProps) => {
 
   return (
     <>
-    <section className='flex flex-col  items-center max-w-xs w-full my-5 rounded-lg bg-slate-950 bg-opacity-80'>
+    <section className='flex flex-col  items-center max-w-full  xs:max-w-[22rem] w-full my-5 rounded-lg bg-slate-950 bg-opacity-80'>
       <article className='flex p-1 bg-slate-700 justify-start w-full rounded-t-lg'>
       <h2 className=' text-4xl'>
         { props.Tables.table_title }

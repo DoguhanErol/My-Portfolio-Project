@@ -14,8 +14,8 @@ const ImageDetail:React.FC<TProps> = (props:TProps) => {
     <>
         <section className="text-gray-600 body-font ">
           <div className="container mx-auto flex  px-5 py-24 md:flex-row flex-col  items-center md:items-stretch ">
-            <article className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-0 md:mb-0 ">
-              <img className="object-cover object-center rounded-md sm:rounded-none md:rounded-l-md max-h-screen " alt="Image" src={globalVariables.baseUrl+props.image.image_path} />
+            <article className=" ">
+              <img className="object-cover object-center rounded-md sm:rounded-none md:rounded-l-md max-h-screen h-auto max-w-full " alt="Image" src={globalVariables.baseUrl+props.image.image_path} />
             </article>
           </div>
         </section>

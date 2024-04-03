@@ -11,10 +11,10 @@ const GalleryCard:React.FC<TProps> = (props:TProps) => {
   //Design
   return (
     <>
-        <article className="flex  justify-center  p-4 xl:m-7">
+        <article className=" xl:m-7">
           <a href={'/galeri/' + props.index.toString()}>
-              <div className="bg-[#73DEE4] min-w-[300px]  sm:min-w-[260px] sm:max-w-[265px]  bg-opacity-40 p-6 rounded-lg hover:border-2 hover:border-sky-300 hover:scale-105  ">
-                <img className="h-40 rounded w-full object-cover object-center mb-6" src={globalVariables.baseUrl+props.Image.image_path} alt={'İmage '+props.Image.image_name} />
+              <div className="bg-[#73DEE4]   bg-opacity-40 rounded-lg hover:border-2 hover:border-sky-300 hover:scale-105  ">
+                <img className="block h-28 xs:h-44  sm:56 md:h-72 lg:h-80  object-cover  object-center w-full rounded-md" src={globalVariables.baseUrl+props.Image.image_path} alt={'İmage '+props.Image.image_id} />
               </div>
           </a>
         </article>

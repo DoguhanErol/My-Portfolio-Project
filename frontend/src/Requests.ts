@@ -1,5 +1,5 @@
 import axios from "axios";
-import {IProject, ITables,ITableContents , IImage, IPrice, IEducation, ICertificate} from './Types';
+import {IProject, ITables,ITableContents , IImage, IPrice, IEducation, ICertificate, IProjectImage, ITechStackCategory} from './Types';
 import globalVariables from "./Config";
 
 // GET All Projects
@@ -18,6 +18,15 @@ export  const fetchProject  = async (id: string)  => {
     const project: IProject = response.data;
     console.log('Project: ', project);
     return project
+};
+
+// GET Project Images By Project Id
+export  const fetchProjectImages  = async (id: string)  => {
+    console.log('Fetching Projects Data ...');
+    const response = await axios.get<IProjectImage[]>(globalVariables.baseUrlApi+'projects/'+id+'/images/');
+    const projectImages: IProjectImage[] = response.data;
+    console.log('Project Images: ', projectImages);
+    return projectImages
 };
 
 //GET Tables
@@ -60,7 +69,7 @@ export  const fetchImages = async ()  => {
     console.log('Fetching Images Data ...');
     const response = await axios.get<IImage[]>(globalVariables.baseUrlApi+'images/');
     const images: IImage[] = response.data;
-    console.log('Tables: ', images);
+    console.log('Images: ', images);
     return images
 };
 
@@ -69,8 +78,17 @@ export  const fetchPrices = async ()  => {
     console.log('Fetching Prices Data ...');
     const response = await axios.get<IPrice[]>(globalVariables.baseUrlApi+'prices/');
     const prices: IPrice[] = response.data;
-    console.log('Tables: ', prices);
+    console.log('Prices: ', prices);
     return prices
+};
+
+//GET Tech Stack Categories
+export  const fetchTechStackCategories = async ()  => {
+    console.log('Fetching Tech Stack Categories ...');
+    const response = await axios.get<ITechStackCategory[]>(globalVariables.baseUrlApi+'techstackcategories/');
+    const techStackCategories: ITechStackCategory[] = response.data;
+    console.log('Tech Stack Categories: ', techStackCategories);
+    return techStackCategories
 };
 
 //POST Mail
