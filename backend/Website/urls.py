@@ -8,6 +8,7 @@ urlpatterns = [
 
 
      path('techstackcategories/', TechStackCategories.as_view(), name='tech-stack-categories'),
+     path('techstacks/<int:fk>/', TechStackByCategoryId.as_view(), name='tech-stacks'),
 
 
     path('educations/', EducationInfoList.as_view(), name='education-list'),

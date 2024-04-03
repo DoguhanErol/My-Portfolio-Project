@@ -130,3 +130,15 @@ class TechStackCategories(APIView):
             return Response(serializer.data)
         except TechStackCategory.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
+
+class TechStackByCategoryId(APIView):
+    def get(self, request, fk):
+        try:
+            if fk:
+                tech_stacks = TechStack.objects.filter(tech_stack_category_id=fk)
+                serializer = TechStackSerializer(tech_stacks, many=True)
+                return Response(serializer.data)
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST)  # Eğer kategori ID'si verilmediyse, hata döndür
+        except Exception as e:
+            return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)  # Herhangi bir hata durumunda 500 hatası döndür

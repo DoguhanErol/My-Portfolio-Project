@@ -134,3 +134,8 @@ class TechStackCategoriesSerializer(serializers.ModelSerializer):
     class Meta:
         model = TechStackCategory
         fields = '__all__'
+
+class TechStackSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TechStack
+        fields = '__all__'

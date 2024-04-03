@@ -33,6 +33,9 @@ class TableAdmin(admin.ModelAdmin):
 class TechStackCategoryAdmin(admin.ModelAdmin):
     list_display = ('tech_stack_category_id', 'tech_stack_category_title')
 
+class TechStackAdmin(admin.ModelAdmin):
+    list_display = ('tech_stack_category_id','tech_stack_title', 'tech_stack_info','tech_stack_image_path')
+
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(ProjectImage,ProjectImagesAdmin)
 admin.site.register(Education, EducationAdmin)
@@ -43,6 +46,7 @@ admin.site.register(GalleryImage, GalleryImageAdmin)
 admin.site.register(ElectronicMail)
 admin.site.register(Price, PriceAdmin)
 admin.site.register(TechStackCategory, TechStackCategoryAdmin)
+admin.site.register(TechStack,TechStackAdmin)
 
 
 # Register your models here.
