@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useParams } from "react-router-dom";
-import { useQuery } from '@tanstack/react-query';
+import { useQuery} from "@tanstack/react-query";
 //Globals
 import globalVariables from '../Config';
 //Fetchers
@@ -14,6 +14,8 @@ import ProjectCarousel from '../components/project/ProjectCarousel';
 
 //  '/projeler/{id}'
 const  ProjectDetailsPage:React.FC = () => {
+//Query Client tanimladik
+
 
   //Get Parameter From Url
   const { id } = useParams<string>();
@@ -27,6 +29,8 @@ const  ProjectDetailsPage:React.FC = () => {
     queryKey: ['project'],
     queryFn:() => fetchProject(strId),
   });
+
+
 
 
   //Error Handling

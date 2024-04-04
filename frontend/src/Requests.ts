@@ -1,5 +1,5 @@
 import axios from "axios";
-import {IProject, ITables,ITableContents , IImage, IPrice, IEducation, ICertificate, IProjectImage, ITechStackCategory} from './Types';
+import {IProject, ITables,ITableContents , IImage, IPrice, IEducation, ICertificate, IProjectImage, ITechStackCategory, ITechStack} from './Types';
 import globalVariables from "./Config";
 
 // GET All Projects
@@ -91,6 +91,14 @@ export  const fetchTechStackCategories = async ()  => {
     return techStackCategories
 };
 
+//GET Tech Stacks By Id
+export  const fetchTechStacksByCategoryId  = async (id: number)  => {
+    console.log('Fetching Tech Stacks By Category Id ...');
+    const response = await axios.get<ITechStack[]>(globalVariables.baseUrlApi+'techstacks/'+id);
+    const techStacks: ITechStack[] = response.data;
+    console.log('Tech Stacks :', techStacks);
+    return techStacks
+};
 //POST Mail
 
 // export  const fetchPostMail = async (mail: IMail) => {
