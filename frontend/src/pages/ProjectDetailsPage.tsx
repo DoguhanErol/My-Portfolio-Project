@@ -16,7 +16,6 @@ import ProjectCarousel from '../components/project/ProjectCarousel';
 const  ProjectDetailsPage:React.FC = () => {
 //Query Client tanimladik
 
-
   //Get Parameter From Url
   const { id } = useParams<string>();
   let strId: string = ''
@@ -35,7 +34,7 @@ const  ProjectDetailsPage:React.FC = () => {
 
   //Error Handling
   // problem surda !projectData.data.project_name react query nasil calisir iyice ogren oyle gel
-  if (projectData.isLoading || projectData.isRefetching || !projectData.data || !projectData.data.project_name) {
+  if (projectData.isLoading || projectData.isRefetching || projectData.isFetching  ) {
     console.log('Loading...');
     return <LoadingComponent />;
   }
@@ -45,12 +44,12 @@ const  ProjectDetailsPage:React.FC = () => {
     console.log('--Status--', '--' + projectData.status + '--');
     return <ErrorComponent errorMessage="Error" />;
   }
+  const project = projectData.data;
 
-
-  
 //Design
     return (
       <>
+        <>
 
             <article className='flex flex-col  rounded-md w-[95%] shadow-2xl h-auto z-20 bg-slate-950 bg-opacity-80 animate-[backInLeft_0.5s] sm:my-16'>
                 <section className=' flex self-center justify-center w-full  h-full bg-gray-900'>
@@ -62,7 +61,7 @@ const  ProjectDetailsPage:React.FC = () => {
             <article className='flex flex-col  rounded-md w-[95%] shadow-2xl h-auto z-20 bg-slate-950 bg-opacity-80 animate-[backInDown_0.8s_ease] my-3'>
             <section className='flex flex-col  text-xl md:text-3xl  w-full '>
                     <article className='flex flex-row bg-slate-600 w-full'>
-                        <h2 className='text-[#b4d7d9] ml-3'>Proje Adi: <span className='ml-2 text-[#94B0B2]'>{projectData.data.project_name}</span></h2>
+                        <h2 className='text-[#b4d7d9] ml-3'>Proje Adi: <span className='ml-2 text-[#94B0B2]'>{project.project_name}</span></h2>
                     </article>
 {/* 
                     <article className='flex flex-row '>
@@ -108,6 +107,7 @@ const  ProjectDetailsPage:React.FC = () => {
                     <a href='/projeler' className=' px-5 py-1  font-medium border rounded text-[#b4d7d9] ml-1 md:ml-3 hover:text-[#cdf9fc] w-auto h-auto hover:scale-105'><svg xmlns="http://www.w3.org/2000/svg" fill='currentColor' height="24" viewBox="0 -960 960 960" width="24"><path d="M280-200v-80h284q63 0 109.5-40T720-420q0-60-46.5-100T564-560H312l104 104-56 56-200-200 200-200 56 56-104 104h252q97 0 166.5 63T800-420q0 94-69.5 157T564-200H280Z"/></svg></a>
                 </button>
             </article>
+            </>
 
       </>
     )
