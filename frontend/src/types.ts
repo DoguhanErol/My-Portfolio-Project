@@ -36,6 +36,7 @@ export interface IProject{
     project_github_url?:  string | null;
     project_details?:  string | null;
     project_image_path: string;
+    images:IProjectImage[];
 }
 
 export interface ITableContents{

@@ -24,6 +24,8 @@ const TechStackLayout:React.FC = () => {
     return  <ErrorComponent errorMessage="Error" />;
   }
 
+
+
   return (
     <>
     {techStackCategories.data && techStackCategories.data.length > 0 && techStackCategories.data.map((category)=>(
