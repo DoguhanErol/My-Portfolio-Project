@@ -142,3 +142,12 @@ class TechStackByCategoryId(APIView):
                 return Response(status=status.HTTP_400_BAD_REQUEST)  # Eğer kategori ID'si verilmediyse, hata döndür
         except Exception as e:
             return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)  # Herhangi bir hata durumunda 500 hatası döndür
+
+class CvInformationList(APIView):
+    def get(self, request):
+        try:
+            cv_informations = CvInformation.objects.all()
+            serializer = CvInformationSerializer(cv_informations, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except CvInformation.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
