@@ -96,14 +96,23 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'PortfolioProjectDb',  # Deleted for security
+    #     'USER': 'postgres',  # Deleted for security
+    #     'PASSWORD': '12345',  # Deleted for security
+    #     'HOST': 'localhost',
+    #     'PORT': '5432'  # Deleted for security
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'PortfolioProjectDb',  # Deleted for security
-        'USER': 'postgres',  # Deleted for security
-        'PASSWORD': '12345',  # Deleted for security
-        'HOST': 'localhost',
-        'PORT': '5432'  # Deleted for security
+        'ENGINE':'django.db.backends.mysql',
+        'NAME': 'portfolioprojectdb',
+        'USER':'root',
+        'PASSWORD': '12345',
+        'HOST':'localhost',
+        'PORT': '3306'
     }
+    
 }
 
 

@@ -102,7 +102,7 @@ class GalleryImage(models.Model):
     image_id = models.AutoField(primary_key=True)
     image_location = models.CharField(max_length=100, null=True)
     image_name = models.CharField(max_length=100, null=False, blank=True)
-    image_content = models.TextField(max_length=400, null=False, blank=True)
+    image_content = models.TextField(null=True, blank=True, default=None)
     image_path = models.ImageField(upload_to='gallery/', null=False)
     image_created_at = models.DateTimeField(auto_now_add=True)
 
