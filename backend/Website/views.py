@@ -151,3 +151,15 @@ class CvInformationList(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         except CvInformation.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response(str(e),status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+class CvInformationByLangList(APIView):
+    def get(self,request,language:str):
+        try:
+            cv_info_by_lang = CvInformation.objects.filter(cv_info_lang = language)
+            serializer = CvInformationSerializer(cv_info_by_lang, many=True)
+            return Response(serializer.data,status=status.HTTP_200_OK)
+        except CvInformation.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response(str(e),status=status.HTTP_500_INTERNAL_SERVER_ERROR)
