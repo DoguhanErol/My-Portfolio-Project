@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { IProject, IProjectDetail, IProjectShort } from '../../Types';
 // Components
 import ProjectCardComponent from './ProjectCardComponent';
+import ProjectCardLoadingSkelaton from './ProjectsCardLoadingSkelaton';
 
 type TProps = {
   Projects: IProject[];
@@ -29,6 +30,8 @@ const ProjectsSliderComponent: React.FC<TProps> = (props: TProps) => {
   const [activeProjectData, setActiveProjectData] = useState<IProjectShort | null>(firstProject);
   const [activeProjectNumber, setActiveProjectNumber] = useState<number>(0);
   const [lastProjectIndex, setLastProjectIndex] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(true); // New state for loading
+
 
 
   //Active and Last Project Setup
@@ -37,6 +40,7 @@ const ProjectsSliderComponent: React.FC<TProps> = (props: TProps) => {
       if (props.Projects) {
         setActiveProjectData(props.Projects[activeProjectNumber]);
         setLastProjectIndex(props.Projects.length - 1);
+        setIsLoading(false); // Data is loaded
         console.log('Active Project Data:', props.Projects[activeProjectNumber]);
       }
     } catch (error) {
@@ -115,9 +119,13 @@ const ProjectsSliderComponent: React.FC<TProps> = (props: TProps) => {
           {/* Prev Button */}
 
           <div style={cardStyle} className='transition-all duration-500'>
-            <ProjectCardComponent
-              projectDataObj={activeProjectData!}
-            />
+          {isLoading ? (
+              <ProjectCardLoadingSkelaton />// Show skeleton while loading
+            ) : (
+              <ProjectCardComponent
+                projectDataObj={activeProjectData!}
+              />
+            )}
           </div>
 
           {/* Next Button */}
