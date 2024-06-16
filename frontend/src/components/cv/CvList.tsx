@@ -46,9 +46,10 @@ const CvList: React.FC<TProps> = (props: TProps) => {
 
     return (
         <>
-            <section className="grid grid-cols-1 gap-3 p-5 text-4xl rounded-md w-full shadow-2xl h-auto z-20 bg-slate-950 bg-opacity-80">
+        <div className="p-5 text-4xl rounded-md w-full shadow-2xl h-auto z-20 bg-slate-950 bg-opacity-80">
+            <h1>{language}</h1>
+            <section className="flex flex-wrap justify-center gap-3">
 
-                <h1>{language}</h1>
                 {cvInformation.data && cvInformation.data.length > 0 && cvInformation.data.map((cvinfo, index) => {
                     return (
                         <CvCard
@@ -59,6 +60,7 @@ const CvList: React.FC<TProps> = (props: TProps) => {
                 })}
 
             </section>
+        </div>
         </>
     )
 }

@@ -4,7 +4,7 @@ import CvList from "../components/cv/CvList"
 const CvPage: React.FC = () => {
     return (
         <>
-            <section className='grid grid-cols-1 grid-rows-3 gap-3 w-[88%] mt-0 sm:mt-16'>
+            <section className='grid grid-rows-2 grid-cols-1 gap-3 w-[88%] mt-0 sm:mt-16'>
                 <CvList
                     CvLang={'tr'}
                 />

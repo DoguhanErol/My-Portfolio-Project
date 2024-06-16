@@ -32,10 +32,11 @@ const GalleryShorts:React.FC<TProps> = (props:TProps) => {
           index={index}
           />
         ))}
-        <button className='flex flex-row w-full justify-end mt-2 mr-5 text-2xl'>
+
+        </div>
+        <button className='grid gap-x-2  w-full justify-end mt-2  text-2xl'>
             <Link to='/galeri' className=' px-5 py-1 font-medium border rounded text-[#b4d7d9]  hover:text-[#cdf9fc] w-auto h-auto hover:scale-105'>Galeriye Git</Link>
         </button>
-        </div>
       </div>
     </section>
     </>

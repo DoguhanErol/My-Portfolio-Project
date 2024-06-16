@@ -58,11 +58,11 @@ export default function Header() {
                                 <img src={githubIcon} alt="" className='rounded-full' />
                             </figure>
                         </a>
-                        <a className='hover:border-2 hover:p-0 p-[2px]  border-cyan-300 border-0 rounded-full' href={globalVariables.instagramIUrl} target={'_blank'}>
+                        {/* <a className='hover:border-2 hover:p-0 p-[2px]  border-cyan-300 border-0 rounded-full' href={globalVariables.instagramIUrl} target={'_blank'}>
                             <figure className='w-8 md:w-10'>
                                 <img src={instagramIcon} alt="" className='rounded-full' />
                             </figure>
-                        </a>
+                        </a> */}
                         <a className='hover:border-2 hover:p-0 p-[2px]  border-cyan-300 border-0 rounded-full' href={globalVariables.discordUrl} target={'_blank'}>
                             <figure className='w-8 md:w-10'>
                                 <img src={discordIcon} alt="" className='rounded-full ' />
