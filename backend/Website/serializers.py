@@ -139,3 +139,8 @@ class TechStackSerializer(serializers.ModelSerializer):
     class Meta:
         model = TechStack
         fields = '__all__'
+
+class CvInformationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CvInformation
+        fields = '__all__'

@@ -38,7 +38,18 @@ export interface IProject{
     project_image_path: string;
     images:IProjectImage[];
 }
+export interface IProjectShort{
+  project_id:number;
+  project_name: string;
+  project_type: string;
+  project_details?:  string | null;
+  project_image_path: string | null;
+}
 
+export interface IProjectDetail{
+  project:IProject;
+  images:IProjectImage[];
+}
 export interface ITableContents{
     content_id:number;
     table_id:string;
@@ -75,3 +86,10 @@ export interface ITechStack {
   tech_stack_info?: string | null; 
   tech_stack_image_path: string;
 }
+export interface ICvInformation{
+  cv_info_id:number;
+  cv_info_title:string;
+  cv_info_lang:string;
+  cv_info_path:string;
+}
+

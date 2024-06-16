@@ -22,5 +22,7 @@ urlpatterns = [
 #     path('mail/', ElectronicMail.as_view(), name='mail_create'),
     path('images/', ImageList.as_view(), name='image-list'),
     path('prices/', PricesList.as_view(), name='prices-list'),
+    path('cvinfo/', CvInformationList.as_view(), name='cv-information'),
+    path('cvinfo/<str:language>/', CvInformationByLangList.as_view(), name='cv-information-by-lang'),
     # Diğer URL yönlendirmelerinizi buraya ekleyebilirsiniz.
 ]

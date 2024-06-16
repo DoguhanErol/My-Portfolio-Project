@@ -210,4 +210,23 @@ class TechStack(models.Model):
     def __str__(self):
         return self.tech_stack_title
 
+class CvInformation(models.Model):
+    class Meta:
+        verbose_name = 'Cv Bilgisi'
+        verbose_name_plural = 'Cv Bilgileri'
+
+
+    LANGUAGES = [
+        ('tr','Türkçe'),
+        ('en','English'),
+        ('ru','Русский')
+    ]
+
+    cv_info_id = models.AutoField(primary_key=True, verbose_name="Cv Bilgisi Id")
+    cv_info_title = models.CharField(max_length=30, null=False,verbose_name="Cv Adi")
+    cv_info_lang = models.CharField(max_length=30,choices=LANGUAGES,default='normal', null=False, verbose_name='Cv Dili')
+    cv_info_path = models.CharField(max_length=500, null=False,verbose_name='Cv Linki')
+    def __str__(self):
+        return self.cv_info_title
+
 # -Tum tablolari dogru duzgun bir sekilde ORM yapman lazim

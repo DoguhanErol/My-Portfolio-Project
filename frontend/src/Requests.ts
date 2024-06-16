@@ -1,5 +1,5 @@
 import axios from "axios";
-import {IProject, ITables,ITableContents , IImage, IPrice, IEducation, ICertificate, IProjectImage, ITechStackCategory, ITechStack} from './Types';
+import {IProject, ITables,ITableContents , IImage, IPrice, IEducation, ICertificate, IProjectImage, ITechStackCategory, ITechStack, IProjectDetail, ICvInformation} from './Types';
 import globalVariables from "./Config";
 
 // GET All Projects
@@ -14,8 +14,8 @@ export  const fetchProjects = async ()  => {
 // GET Project By Id
 export  const fetchProject  = async (id: string)  => {
     console.log('Fetching Projects Data ...');
-    const response = await axios.get<IProject>(globalVariables.baseUrlApi+'projects/'+id);
-    const project: IProject = response.data;
+    const response = await axios.get<IProjectDetail>(globalVariables.baseUrlApi+'projects/'+id);
+    const project: IProjectDetail = response.data;
     console.log('Project: ', project);
     return project
 };
@@ -99,6 +99,14 @@ export  const fetchTechStacksByCategoryId  = async (id: number)  => {
     console.log('Tech Stacks :', techStacks);
     return techStacks
 };
+//GET Cv Infortmation By Language
+export const fetchCvInformationByLang = async (lang:string) => {
+    console.log('Fetching Cv Information By Language ...');
+    const response = await axios.get<ICvInformation[]>(globalVariables.baseUrlApi +'cvinfo/' + lang);
+    const cvInformation: ICvInformation[] = response.data;
+    console.log('Cv Informations : ', cvInformation);
+    return cvInformation;
+}
 //POST Mail
 
 // export  const fetchPostMail = async (mail: IMail) => {

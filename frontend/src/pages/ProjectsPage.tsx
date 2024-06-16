@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 //Fetchers
 import { fetchProjects } from "../Requests";
 //Types
-import {IProject} from '../Types';
+import { IProject, IProjectShort } from '../Types';
 //Components
 import LoadingComponent from "../components/shared/LoadingComponent";
 import ErrorComponent from "../components/shared/ErrorComponent";
@@ -11,9 +11,9 @@ import ProjectComponent from "../components/project/ProjectComp";
 
 
 //  '/projeler'
-const ProjectsPage:React.FC = () => {
+const ProjectsPage: React.FC = () => {
   //Querys
-  const { isError,  isLoading, data, error, status, isRefetching } = useQuery<IProject[], Error, IProject[], ["projects"]>({
+  const { isError, isLoading, data, error, status, isRefetching } = useQuery<IProjectShort[], Error, IProjectShort[], ["projects"]>({
     queryKey: ['projects'],
     queryFn: fetchProjects,
   });
@@ -21,27 +21,27 @@ const ProjectsPage:React.FC = () => {
   //Checks
   if (isLoading || isRefetching) {
     console.log('Loading...')
-    console.log('--Status--','--'+status+'--')
+    console.log('--Status--', '--' + status + '--')
     return <LoadingComponent />;
   }
 
   if (isError) {
-    console.log('!!!Error: ',error)
-    console.log('--Status--','--'+status+'--')
+    console.log('!!!Error: ', error)
+    console.log('--Status--', '--' + status + '--')
     return <ErrorComponent errorMessage="Error" />;
   }
 
-//Design
+  //Design
   return (
     <>
-    <section className='flex flex-col w-[89%] sm:mt-14'>
-    { data && data.length > 0  && data.map((project) =>(
-        <ProjectComponent
-        Project={project}
-        />
-    ))}
-    </section>
-  </>
+      <section className='flex flex-col w-[89%] sm:mt-14'>
+        {data && data.length > 0 && data.map((project) => (
+          <ProjectComponent
+            Project={project}
+          />
+        ))}
+      </section>
+    </>
   )
 }
 
