@@ -8,7 +8,12 @@ const AboutMeComponent:React.FC = () => {
 <article className="">
     <p className=" text-lg sm:text-xl lg:text-3xl px-2">
     <img src={myImage} alt="My Picture" className="float-left w-40 h-52 sm:w-56 sm:h-72 m-3 rounded-lg" />
-      Merhaba, ben Doğuhan. 2019 yılında Milas Anadolu Lisesi'nden mezun olduktan sonra, teknoloji ve bilgisayar tutkunu olarak Bilgisayar Programcılığı bölümüne başladım. Bölüm içerisinde bilgi sistemlerine duyduğum ilgiyi geliştirdim. Geleceğin yazılım alanlarından biri olarak gördüğüm ve bilgi sistemleri için mükemmel olduğunu düşündüğüm web alanında uzmanlaşmaya karar verdim. Bilgisayar Programcılığından mezun olduktan sonra, gözümü web veya yapay zeka alanında şirketleşmeye çevirdim. Bu nedenle Yönetim Bilişim Sistemleri okumaya karar verdim. Uzaktan eğitim alarak, yazılım alanında uzmanlaşırken aynı zamanda yönetim ve girişim konularında dersler alarak hedefime ilerlemeyi planladım. İlk projelerimi yayınlayarak, projenin baştan sona bana ait olması, hem yazılım konusunda hem de projenin yönetimi ve pazarlanması konularında tecrübe kazanmama yardımcı oldu. Şu anda projelerim genellikle 'Front-End' ağırlıklı olduğu için 'Back-End' konusunda deneyim kazanmaya çalışıyorum.
+    Merhaba! Ben Doğuhan Erol. Muğla Sıtkı Koçman Üniversitesi'nde Bilgisayar Programcılığı ve Anadolu Üniversitesi'nde Yönetim Bilişim Sistemleri bölümlerinden mezun oldum. Ayrıca Web Tasarımı sertifikasına sahibim.
+
+Web üzerinde yazılım geliştirme konusunda uzmanlaşmış biriyim ve projelerimi genellikle sıfırdan kodlayarak geliştiriyorum. Her projeye baştan sona kendim çözüm üretmekten keyif alıyorum ve bu süreçte kaliteyi ön planda tutuyorum.
+
+Teknolojiye olan ilgim ve sürekli olarak gelişen web teknolojilerini takip etme tutkum sayesinde, kendimi sürekli yeniliyorum ve projelerimde en son teknolojileri kullanarak çözümler üretiyorum.
+Boş zamanlarımda yeni teknolojileri denemek, yeni şeyler öğrenmek ve spor yapmak gibi aktivitelerle ilgileniyorum. Her zaman yeni projeler ve işbirlikleri için açığım. Daha fazla bilgi veya işbirliği teklifi için benimle iletişime geçmekten çekinmeyin!
     </p>
 </article>
 
