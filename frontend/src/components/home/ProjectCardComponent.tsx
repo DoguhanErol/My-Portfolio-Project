@@ -1,13 +1,22 @@
 //Globals
+import { useState } from "react";
 import globalVariables from "../../Config";
 //Types
 import { IProject, IProjectShort } from "../../Types"
+import ProjectCardLoadingSkelaton from "./ProjectsCardSkelaton";
 
 
 type TProps = {
   projectDataObj: IProjectShort;
 }
 const ProjectCardComponent: React.FC<TProps> = (props: TProps) => {
+
+  //if image cant load
+  const [isError, setIsError] = useState(false);
+  const handleImageError = () => {
+    setIsError(true);
+  };
+
   //Design
   return (
     <>
@@ -28,8 +37,17 @@ const ProjectCardComponent: React.FC<TProps> = (props: TProps) => {
           </div>
         </div>
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-full">
-          <img className="object-cover object-center  rounded" alt="hero" src={globalVariables.baseUrl + props.projectDataObj?.project_image_path} />
-        </div>
+        {isError ? (
+            <ProjectCardLoadingSkelaton />
+          ) : (
+            <img
+              className="object-cover object-center rounded"
+              alt="hero"
+              src={globalVariables.baseUrl + props.projectDataObj?.project_image_path}
+              onError={handleImageError}
+            />
+          )}
+          </div>
       </article>
       {/* Project */}
     </>
