@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 //Images
-import techStackImage from '../../../public/tech-stack.png';
 import myImage from './../../assets/home/myImage.png';
 
 const AboutMeShortComponent = () => {
