@@ -10,7 +10,7 @@ import { IProject, IProjectDetail } from '../Types';
 //Components
 import ErrorComponent from '../components/shared/ErrorComponent';
 import LoadingComponent from '../components/shared/LoadingComponent';
-import ProjectCarousel from '../components/project/ProjectCarousel';
+import ProjectCarousel from '../components/project/ProjectDetail';
 
 //  '/projeler/{id}'
 const ProjectDetailsPage: React.FC = () => {
