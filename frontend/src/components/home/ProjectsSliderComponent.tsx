@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { IProject, IProjectDetail, IProjectShort } from '../../Types';
 // Components
 import ProjectCardComponent from './ProjectCardComponent';
-import ProjectCardLoadingSkelaton from './ProjectsCardLoadingSkelaton';
+import ProjectCardLoadingSkelaton from './ProjectsCardSkelaton';
 
 type TProps = {
   Projects: IProject[];
@@ -111,7 +111,7 @@ const ProjectsSliderComponent: React.FC<TProps> = (props: TProps) => {
         </div>
         <div className='flex flex-row w-full items-center justify-center'>
           {/* Prev Button */}
-          <div className=' h-full relative w-0 z-30 md:w-auto m-2  text-cyan-50'>
+          <div className=' h-full relative w-0  z-30 md:w-auto m-2  text-cyan-50'>
             <button disabled={buttonsDisable} onClick={handleEventPrevClick} className=' hover:border-gray-50 hover:text-gray-50  z-30 cursor-pointer  border-2 border-blue-400 text-blue-200 rounded-full w-12 h-12 p-2 md:w-16 md:h-16  md:p-4 ' >
               <svg className='pl-2' xmlns="http://www.w3.org/2000/svg" height="full" fill="currentColor" viewBox="0 -960 960 960" width="full"><path d="M400-80 0-480l400-400 56 57-343 343 343 343-56 57Z" /></svg>
             </button>
@@ -129,7 +129,7 @@ const ProjectsSliderComponent: React.FC<TProps> = (props: TProps) => {
           </div>
 
           {/* Next Button */}
-          <div className=' h-full relative  -left-12 md:static w-0 z-30  md:w-auto m-2  text-cyan-50'>
+          <div className=' h-full relative -left-12 md:static w-0 z-30  md:w-auto m-2  text-cyan-50'>
             <button disabled={buttonsDisable} onClick={handleEventNextClick} className=' hover:border-gray-50 hover:text-gray-50  z-30 cursor-pointer  border-2 border-blue-400 text-blue-200 rounded-full w-12 h-12 p-2  md:w-16 md:h-16  md:p-4 ' >
               <svg className='px-1 ' xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="full" viewBox="0 -960 960 960" width="full"><path d="m304-82-56-57 343-343-343-343 56-57 400 400L304-82Z" /></svg>
             </button>
