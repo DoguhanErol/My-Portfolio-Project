@@ -7,6 +7,7 @@ import ProjectsPage from "./pages/ProjectsPage";
 import ProjectsDetailsPage from './pages/ProjectDetailsPage'
 import { useEffect } from "react";
 import CvPage from "./pages/CvPage";
+import { GalleryProvider } from "./contexts/GalleryContext";
 
 
 const AppRoutes = () => {
@@ -18,16 +19,19 @@ const AppRoutes = () => {
 
   return (
     <>
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/galeri' element={<GalleryPage />} />
-        <Route path='/galeri/:id' element={<GalleryImageDetailPage />} />
-        <Route path='/projeler' element={<ProjectsPage />} />
-        <Route path='/projeler/:id' element={<ProjectsDetailsPage />} />
-        <Route path='/hakkimda' element={<AboutMePage />} />
-        <Route path='/cv' element={<CvPage />} />
-        {/* <Route path='/iletisim' element={<ContactPage />}/> */}
-      </Routes>
+      <GalleryProvider>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/galeri' element={<GalleryPage />} />
+          <Route path='/galeri/:page/:id' element={<GalleryImageDetailPage />} />
+          <Route path='/projeler' element={<ProjectsPage />} />
+          <Route path='/projeler/:id' element={<ProjectsDetailsPage />} />
+          <Route path='/hakkimda' element={<AboutMePage />} />
+          <Route path='/cv' element={<CvPage />} />
+          {/* <Route path='/iletisim' element={<ContactPage />}/> */}
+        </Routes>
+      </GalleryProvider>
+
     </>
   )
 }

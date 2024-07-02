@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import * as React from "react";
 //Types
-import { IImage } from '../../Types';
+import { IImage, ImagesResponse } from '../../Types';
 //Components
 import GalleryCard from "./GalleryCard";
 
 
 type TProps = {
-  Images:IImage[];
+  Images:ImagesResponse;
 }
 
 const GalleryShorts:React.FC<TProps> = (props:TProps) => {
@@ -25,7 +25,7 @@ const GalleryShorts:React.FC<TProps> = (props:TProps) => {
         </div>
         <div className="grid grid-cols-3 gap-1">
             {/* Image Cards */}
-        {props.Images && props.Images.length > 0  && props.Images.slice(0,6).map((image, index) => (
+        {props.Images.results && props.Images.results.length > 0  && props.Images.results.slice(0,6).map((image, index) => (
           <GalleryCard
           key={index}
           Image={image}
@@ -35,7 +35,7 @@ const GalleryShorts:React.FC<TProps> = (props:TProps) => {
 
         </div>
         <button className='grid gap-x-2  w-full justify-end mt-2  text-2xl'>
-            <Link to='/galeri' className=' px-5 py-1 font-medium border rounded text-[#b4d7d9]  hover:text-[#cdf9fc] w-auto h-auto hover:scale-105'>Galeriye Git</Link>
+            <Link to='/galeri?page=1' className=' px-5 py-1 font-medium border rounded text-[#b4d7d9]  hover:text-[#cdf9fc] w-auto h-auto hover:scale-105'>Galeriye Git</Link>
         </button>
       </div>
     </section>

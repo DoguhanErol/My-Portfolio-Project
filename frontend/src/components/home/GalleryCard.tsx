@@ -50,7 +50,7 @@ const GalleryCard: React.FC<TProps> = (props: TProps) => {
               <ImageSkelaton />
             ) : (
               <article className="xl:m-7">
-                <a href={'/galeri/' + props.index.toString()}>
+                <a href={'/galeri/1/'+ props.index.toString()}>
                   <div className="bg-[#73DEE4] bg-opacity-40 rounded-lg ">
                   <img
                     className="block h-28 xs:h-44 sm:h-56 md:h-72 lg:h-80 object-cover object-center w-full rounded-md hover:border-2 hover:border-sky-300 hover:scale-105"

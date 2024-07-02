@@ -15,7 +15,7 @@ type globals ={
     mailAddress:string;
     cvUrl:string;
 }
-const baseUrl:string ='http://127.0.0.1:8000';
+const baseUrl:string ='http://127.0.0.1:8080';
 
 const globalVariables:globals= {
     websiteUrl:'http://localhost:5173/',

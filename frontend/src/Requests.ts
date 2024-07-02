@@ -1,5 +1,5 @@
 import axios from "axios";
-import {IProject, ITables,ITableContents , IImage, IPrice, IEducation, ICertificate, IProjectImage, ITechStackCategory, ITechStack, IProjectDetail, ICvInformation} from './Types';
+import {ImagesResponse ,IProject, ITables,ITableContents , IImage, IPrice, IEducation, ICertificate, IProjectImage, ITechStackCategory, ITechStack, IProjectDetail, ICvInformation} from './Types';
 import globalVariables from "./Config";
 
 // GET All Projects
@@ -65,10 +65,10 @@ export  const fetchCertificates = async ()  => {
 };
 
 //GET Images
-export  const fetchImages = async ()  => {
+export  const fetchImages = async (page: string)  => {
     console.log('Fetching Images Data ...');
-    const response = await axios.get<IImage[]>(globalVariables.baseUrlApi+'images/');
-    const images: IImage[] = response.data;
+    const response = await axios.get<ImagesResponse>(globalVariables.baseUrlApi+'images/?page='+page);
+    const images: ImagesResponse = response.data;
     console.log('Images: ', images);
     return images
 };

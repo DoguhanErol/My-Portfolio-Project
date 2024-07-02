@@ -97,7 +97,7 @@ export default function Header() {
                     <nav className='hidden sm:flex  gap-16 text-xl sm:text-2xl md:text-3xl lg:text-4xl bg-slate-700 p-1  sm:px-3 md:px-10 rounded-lg'>
                         <Link to={'/'} className='hover:text-[#c5ebed]'>Ana Sayfa</Link>
                         <Link to={'/projeler'} className='hover:text-[#c5ebed]'>Projeler</Link>
-                        <Link to={'/galeri'} className='hover:text-[#c5ebed]'>Galeri</Link>
+                        <Link to={'/galeri?page=1'} className='hover:text-[#c5ebed]'>Galeri</Link>
                         <Link to={'/hakkimda'} className='hover:text-[#c5ebed]'>Hakkimda</Link>
                         <Link to={'/cv'} className='hover:text-[#c5ebed]'>Cv</Link>
                         {/* <Link to={'/iletisim'} className='hover:text-[#c5ebed]'>Iletısım</Link> */}
@@ -121,10 +121,10 @@ export default function Header() {
                             <nav className='flex flex-col text-4xl gap-3'>
                                 <Link to={'/'} style={{ color: location.pathname === '/' ? '#c5ebed' : '', borderLeft: location.pathname === '/' ? 'solid 3px white' : '' }} className='hover:text-[#c5ebed] pl-2 ' onClick={handleLinkClick}>Ana Sayfa</Link>
                                 <Link to={'/projeler'} style={{ color: location.pathname === '/projeler' ? '#c5ebed' : '', borderLeft: location.pathname === '/projeler' ? 'solid 3px white' : '' }} className='hover:text-[#c5ebed] pl-2 ' onClick={handleLinkClick}>Projeler</Link>
-                                <Link to={'/galeri'} style={{ color: location.pathname === '/galeri' ? '#c5ebed' : '', borderLeft: location.pathname === '/galeri' ? 'solid 3px white' : '' }} className='hover:text-[#c5ebed] pl-2 ' onClick={handleLinkClick}>Galeri</Link>
+                                <Link to={'/galeri?page=1'} style={{ color: location.pathname === '/galeri' ? '#c5ebed' : '', borderLeft: location.pathname === '/galeri' ? 'solid 3px white' : '' }} className='hover:text-[#c5ebed] pl-2 ' onClick={handleLinkClick}>Galeri</Link>
                                 <Link to={'/hakkimda'} style={{ color: location.pathname === '/hakkimda' ? '#c5ebed' : '', borderLeft: location.pathname === '/hakkimda' ? 'solid 3px white' : '' }} className='hover:text-[#c5ebed] pl-2 ' onClick={handleLinkClick}>Hakkımda</Link>
-                                <a href={globalVariables.cvUrl} style={{ color: location.pathname === '/cv' ? '#c5ebed' : '', borderLeft: location.pathname === '/cv' ? 'solid 3px white' : '' }} className='flex hover:text-[#c5ebed] pl-2 ' onClick={handleLinkClick}>CV<svg className='h-auto ' fill='currentColor' xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z" /></svg></a>
-                            </nav>
+                                <Link to={'/cv'}  style={{ color: location.pathname === '/cv' ? '#c5ebed' : '', borderLeft: location.pathname === '/cv' ? 'solid 3px white' : '' }} className='hover:text-[#c5ebed] pl-2 ' onClick={handleLinkClick}>Cv</Link>
+                                </nav>
                         </article>
                     </div>
                 </section>

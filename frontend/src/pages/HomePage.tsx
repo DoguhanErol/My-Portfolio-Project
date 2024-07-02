@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 //Fetchers
 import { fetchImages, fetchPrices, fetchProjects } from "../Requests";
 //Types
-import { IImage, IPrice, IProject } from "../Types";
+import { IImage, IPrice, IProject, ImagesResponse } from "../Types";
 //Components
 import AboutMeShortComponent from "../components/home/AboutMeShortComponent"
 import GalleryShorts from "../components/home/GalleryShorts"
@@ -23,9 +23,9 @@ export default function HomePage() {
     queryKey: ['prices'],
     queryFn: fetchPrices,
   });
-  const imagesData = useQuery<IImage[], Error, IImage[], ["images"]>({
+  const imagesData = useQuery<ImagesResponse, Error, ImagesResponse, ["images"]>({
     queryKey: ['images'],
-    queryFn: fetchImages,
+    queryFn: () => fetchImages('1'), // fetchImages fonksiyonunu bir callback olarak geçiyoruz
   });
   //Checks
   if (projectsData.isLoading || pricesData.isLoading || imagesData.isLoading || projectsData.isRefetching || pricesData.isRefetching || imagesData.isRefetching) {

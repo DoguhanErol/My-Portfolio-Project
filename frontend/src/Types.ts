@@ -16,6 +16,12 @@ export interface IImage{
     image_id:number;
     image_path:string;
 }
+export interface ImagesResponse {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: IImage[];
+}
 export interface IProjectImage{
   id: number;
   image: string;
