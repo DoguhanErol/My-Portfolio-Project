@@ -1,6 +1,6 @@
 import  { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { IImage, ImagesResponse } from '../Types';
+import { ImagesResponse } from '../Types';
 import ImageDetail from '../components/gallery/ImageDetail';
 import ErrorComponent from '../components/shared/ErrorComponent';
 import LoadingComponent from '../components/shared/LoadingComponent';

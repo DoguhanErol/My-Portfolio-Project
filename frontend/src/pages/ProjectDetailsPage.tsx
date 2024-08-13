@@ -2,11 +2,10 @@ import * as React from 'react';
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 //Globals
-import globalVariables from '../Config';
 //Fetchers
 import { fetchProject } from '../Requests';
 //Types
-import { IProject, IProjectDetail } from '../Types';
+import { IProjectDetail } from '../Types';
 //Components
 import ErrorComponent from '../components/shared/ErrorComponent';
 import LoadingComponent from '../components/shared/LoadingComponent';

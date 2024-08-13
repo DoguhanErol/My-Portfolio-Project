@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import * as React from "react";
 //Types
-import { IImage, ImagesResponse } from '../../Types';
+import { ImagesResponse } from '../../Types';
 //Components
 import GalleryCard from "./GalleryCard";
 

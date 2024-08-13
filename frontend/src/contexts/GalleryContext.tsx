@@ -1,7 +1,7 @@
 // src/contexts/GalleryContext.tsx
 import 'react'
 import  { createContext, useContext, useState, ReactNode } from 'react';
-import { IImage, ImagesResponse } from '../Types';
+import { IImage } from '../Types';
 
 interface GalleryContextProps {
   images: IImage[];

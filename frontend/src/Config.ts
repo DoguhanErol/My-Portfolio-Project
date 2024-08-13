@@ -15,10 +15,10 @@ type globals ={
     mailAddress:string;
     cvUrl:string;
 }
-const baseUrl:string ='http://127.0.0.1:8080';
+const baseUrl:string ='https://backend.doguhanerol.dev';
 
 const globalVariables:globals= {
-    websiteUrl:'http://localhost:5173/',
+    websiteUrl:'https://www.doguhanerol.dev/',
     baseUrl: baseUrl,
     baseUrlApi:baseUrl+'/api/v2/',
     baseUrlMediaImages:baseUrl+'/media/gallery/',

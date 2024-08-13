@@ -1,5 +1,5 @@
 import globalVariables from '../../Config';
-import { IProject, IProjectDetail, IProjectShort } from '../../Types';
+import { IProjectShort } from '../../Types';
 
 type TProps = {
     Project: IProjectShort;

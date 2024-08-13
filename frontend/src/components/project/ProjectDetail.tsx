@@ -3,7 +3,7 @@ import globalVariables from '../../Config';
 //Fetchers
 import { fetchProjectImages } from '../../Requests';
 //Types
-import { IProject, IProjectDetail, IProjectImage } from '../../Types';
+import { IProjectDetail, IProjectImage } from '../../Types';
 //Components
 import ErrorComponent from '../shared/ErrorComponent';
 import LoadingComponent from '../shared/LoadingComponent';

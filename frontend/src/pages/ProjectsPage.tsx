@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 //Fetchers
 import { fetchProjects } from "../Requests";
 //Types
-import { IProject, IProjectShort } from '../Types';
+import { IProjectShort } from '../Types';
 //Components
 import LoadingComponent from "../components/shared/LoadingComponent";
 import ErrorComponent from "../components/shared/ErrorComponent";

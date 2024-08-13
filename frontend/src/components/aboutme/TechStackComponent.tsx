@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import * as React from "react"
-import { useParams } from "react-router-dom";
 import globalVariables from "../../Config";
 import { fetchTechStacksByCategoryId } from "../../Requests";
 import { ITechStack } from "../../Types";

@@ -1,5 +1,5 @@
 import axios from "axios";
-import {ImagesResponse ,IProject, ITables,ITableContents , IImage, IPrice, IEducation, ICertificate, IProjectImage, ITechStackCategory, ITechStack, IProjectDetail, ICvInformation} from './Types';
+import {ImagesResponse ,IProject, ITables,ITableContents , IPrice, IEducation, ICertificate, IProjectImage, ITechStackCategory, ITechStack, IProjectDetail, ICvInformation} from './Types';
 import globalVariables from "./Config";
 
 // GET All Projects

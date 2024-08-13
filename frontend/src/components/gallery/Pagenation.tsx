@@ -6,7 +6,7 @@ import * as React from 'react';
 
 const PaginationWithPageCount: React.FC = () => {
     const { count } = useGalleryContext();
-    const [pageCount, setPageCount] = useState<number>(Math.ceil(count / 9));
+    const [pageCount] = useState<number>(Math.ceil(count / 9));
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const [pageNumber, setPageNumber] = useState<number>(parseInt(queryParams.get('page') || '1', 10));
@@ -39,7 +39,7 @@ const PaginationWithPageCount: React.FC = () => {
                             to={`${globalVariables.websiteUrl}galeri?page=${index}`}
                             key={index}
                             type="button"
-                            className={`inline-flex items-center justify-center w-8 h-8 text-sm border rounded shadow-md    bg-gray-900 border-gray-800 ${index === pageNumber ? 'bg-blue-400 text-white' : ''}`}
+                            className={`inline-flex items-center mx-1 justify-center w-8 h-8 text-sm border rounded shadow-md    bg-gray-900 border-gray-800 ${index === pageNumber ? 'bg-blue-400 text-white' : ''}`}
                             title={`Page ${index}`}
                         >
                             {index}

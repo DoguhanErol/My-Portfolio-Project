@@ -2,7 +2,7 @@
 import { useState } from "react";
 import globalVariables from "../../Config";
 //Types
-import { IProject, IProjectShort } from "../../Types"
+import { IProjectShort } from "../../Types"
 import ProjectCardLoadingSkelaton from "./ProjectsCardSkelaton";
 
 

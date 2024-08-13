@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 //Fetchers
 import { fetchImages, fetchPrices, fetchProjects } from "../Requests";
 //Types
-import { IImage, IPrice, IProject, ImagesResponse } from "../Types";
+import { IPrice, IProject, ImagesResponse } from "../Types";
 //Components
 import AboutMeShortComponent from "../components/home/AboutMeShortComponent"
 import GalleryShorts from "../components/home/GalleryShorts"

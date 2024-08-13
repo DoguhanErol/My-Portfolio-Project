@@ -3,6 +3,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import generics
 from rest_framework.filters import SearchFilter
+from rest_framework.pagination import PageNumberPagination
+
 from django.shortcuts import get_object_or_404
 from .models import *
 from .serializers import *
@@ -92,8 +94,11 @@ class ImageList(APIView):
     def get(self, request):
         try:
             images = GalleryImage.objects.all()
-            serializer = ImageSerializer(images, many=True)
-            return Response(serializer.data)
+            paginator = PageNumberPagination()
+            paginator.page_size = 9
+            result_page = paginator.paginate_queryset(images, request)
+            serializer = ImageSerializer(result_page, many=True)
+            return paginator.get_paginated_response(serializer.data)
         except GalleryImage.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
         
