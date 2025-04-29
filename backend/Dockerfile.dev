@@ -1,0 +1,22 @@
+# Base image olarak python:3.9 alıyoruz
+FROM python:3.9
+
+# Çalışma dizinini oluşturuyoruz
+WORKDIR /app
+
+# Pip'i güncelliyoruz
+RUN pip install --upgrade pip
+
+# requirements.txt dosyasını kopyalıyoruz
+COPY requirements.txt /app/
+
+RUN pip install --upgrade pip
+
+# Gerekli paketleri yüklüyoruz
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Kod dosyalarını kopyalıyoruz
+COPY . /app/
+
+# Container çalıştığında çalışacak komut
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8001"]

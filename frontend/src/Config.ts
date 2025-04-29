@@ -1,37 +1,35 @@
-
-type globals ={
-    websiteUrl:string;
-    baseUrl:string;
-    baseUrlApi:string;
-    baseUrlMediaImages:string;
-    baseUrlMediaProjects:string;
-    baseUrlMediaCv:string;
-    whatsAppApiUrl:string;
-    adminLoginUrl:string;
-    linkedingUrl:string;
-    githubUrl:string;
-    instagramIUrl:string;
-    discordUrl:string;
-    mailAddress:string;
-    cvUrl:string;
-}
-const baseUrl:string ='http://127.0.0.1:8000';
-
-const globalVariables:globals= {
-    websiteUrl:'http://localhost:5173/',
-    baseUrl: baseUrl,
-    baseUrlApi:baseUrl+'/api/v2/',
-    baseUrlMediaImages:baseUrl+'/media/gallery/',
-    baseUrlMediaProjects:baseUrl+'/media/projects/',
-    baseUrlMediaCv:baseUrl+'/media/cv/',
-    adminLoginUrl:baseUrl+'/admin/',
-    whatsAppApiUrl: 'https://api.whatsapp.com/send?phone=905454439862&text=Merhaba,%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.',
-    linkedingUrl:'https://www.linkedin.com/in/do%C4%9Fuhan-erol-5b0336244/',
-    githubUrl:'https://github.com/DoguhanErol',
-    instagramIUrl:'https://www.instagram.com/doguhan_dev/',
-    discordUrl:'https://discordapp.com/users/452578029084999680',
-    mailAddress:'doguhaneroljob@gmail.com',
-    cvUrl:baseUrl+'/media/cv.pdf',
+type Globals = {
+    websiteUrl: string;
+    baseUrl: string;
+    baseUrlApi: string;
+    baseUrlMediaImages: string;
+    baseUrlMediaProjects: string;
+    baseUrlMediaCv: string;
+    adminLoginUrl: string;
+    whatsAppApiUrl: string;
+    linkedingUrl: string;
+    githubUrl: string;
+    instagramIUrl: string;
+    discordUrl: string;
+    mailAddress: string;
+    cvUrl: string;
+  };
+  
+  const globalVariables: Globals = {
+    websiteUrl: import.meta.env.VITE_WEBSITE_URL,
+    baseUrl: import.meta.env.VITE_BASE_URL,
+    baseUrlApi: import.meta.env.VITE_BASE_URL_API,
+    baseUrlMediaImages: import.meta.env.VITE_BASE_URL_MEDIA_IMAGES,
+    baseUrlMediaProjects: import.meta.env.VITE_BASE_URL_MEDIA_PROJECTS,
+    baseUrlMediaCv: import.meta.env.VITE_BASE_URL_MEDIA_CV,
+    adminLoginUrl: import.meta.env.VITE_ADMIN_LOGIN_URL,
+    whatsAppApiUrl: import.meta.env.VITE_WHATSAPP_API_URL,
+    linkedingUrl: import.meta.env.VITE_LINKEDIN_URL,
+    githubUrl: import.meta.env.VITE_GITHUB_URL,
+    instagramIUrl: import.meta.env.VITE_INSTAGRAM_URL,
+    discordUrl: import.meta.env.VITE_DISCORD_URL,
+    mailAddress: import.meta.env.VITE_MAIL_ADDRESS,
+    cvUrl: import.meta.env.VITE_CV_URL,
   };
   
   export default globalVariables;
