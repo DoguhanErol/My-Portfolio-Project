@@ -1,0 +1,18 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Önce bağımlılıkları kopyala ve kur
+COPY package*.json ./
+RUN npm install && npx update-browserslist-db@latest --update-db
+
+# Uygulama kodunu kopyala
+COPY . .
+
+# Geliştirme sunucusu için ek parametreler
+ENV CHOKIDAR_USEPOLLING=true
+ENV WATCHPACK_POLLING=true
+
+EXPOSE 3002
+
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "3002"]

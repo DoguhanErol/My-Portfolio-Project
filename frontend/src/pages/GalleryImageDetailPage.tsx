@@ -6,6 +6,7 @@ import ErrorComponent from '../components/shared/ErrorComponent';
 import LoadingComponent from '../components/shared/LoadingComponent';
 import { useGalleryContext } from '../contexts/GalleryContext';
 import * as React from 'react';
+import globalVariables from '../Config';
 
 const GalleryImageDetailPage: React.FC = () => {
   const { id, page } = useParams<{ id: string; page?: string }>();
@@ -21,9 +22,10 @@ const GalleryImageDetailPage: React.FC = () => {
 
   useEffect(() => {
     const fetchImageData = async () => {
+      console.log(`${globalVariables.baseUrlApi}images/?page=${pageNumber}`)
       setIsLoading(true);
       try {
-        const response = await fetch(`http://127.0.0.1:8080/api/v2/images/?page=${pageNumber}`);
+        const response = await fetch(`${globalVariables.baseUrlApi}images/?page=${pageNumber}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

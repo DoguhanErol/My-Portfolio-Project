@@ -10,7 +10,7 @@ const PricesComponent:React.FC<TProps> = (props:TProps) => {
   //Design
   return (
     <>
-      <section className="xl:w-[100%] text-sky-200 bg-slate-950 bg-opacity-80 rounded-md body-font overflow-hidden text-lg">
+      <section className="container text-sky-200 bg-slate-950 bg-opacity-80 rounded-md body-font overflow-hidden text-lg">
           <div className="container  px-5 py-12 mx-auto">
             <div className="flex flex-col text-center w-full mb-20">
               <h2 className="text-start sm:text-4xl text-3xl font-medium title-font mb-2 text-white">Fiyatlar</h2>

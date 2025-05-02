@@ -9,6 +9,7 @@ type TProps ={
     index:string;
 }
 const ImageDetail:React.FC<TProps> = (props:TProps) => {
+  console.log(globalVariables.baseUrl+props.image.image_path)
   //Design
   return (
     <>

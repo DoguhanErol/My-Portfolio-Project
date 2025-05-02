@@ -141,7 +141,9 @@ class TechStackByCategoryId(APIView):
         try:
             if fk:
                 tech_stacks = TechStack.objects.filter(tech_stack_category_id=fk)
+                print(tech_stacks)
                 serializer = TechStackSerializer(tech_stacks, many=True)
+                print(serializer.data)
                 return Response(serializer.data)
             else:
                 return Response(status=status.HTTP_400_BAD_REQUEST)  # Eğer kategori ID'si verilmediyse, hata döndür

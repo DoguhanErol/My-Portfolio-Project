@@ -1,0 +1,27 @@
+# Python 3.10 veya üzeri kullanın (Django 5.x için gerekli)
+FROM python:3.10
+
+# Sistem bağımlılıklarını ekleyin
+RUN apt-get update && apt-get install -y \
+    default-libmysqlclient-dev \
+    python3-dev \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/*
+
+# Çalışma dizinini oluştur
+WORKDIR /app
+
+# Gereksiz önbelleği temizle
+RUN apt-get clean
+
+ENV PYTHONUNBUFFERED=1
+
+# Paketleri kopyala ve kur
+COPY requirements.txt /app/
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
+# Uygulama kodunu kopyala
+COPY . /app/
+
+# Çalıştırma komutu
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8001"]
