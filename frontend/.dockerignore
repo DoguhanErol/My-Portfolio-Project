@@ -3,6 +3,5 @@ build
 .dockerignore
 Dockerfile
 Dockerfile.dev
-.env
 .git
 .gitignore

@@ -1,22 +1,25 @@
 
 from pathlib import Path
-from decouple import config, Csv  # type: ignore
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
-
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
-
-#Cors Settings
-CORS_ALLOW_ALL_ORIGINS = True # Dangerus at production only I will use at dev!!!
 
 
+SECRET_KEY = os.getenv('SECRET_KEY')
+
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', '').split(',')
+CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', '').split(',')
+
+MEDIA_URL = '/media/'  
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  
 INSTALLED_APPS = [
     'jazzmin',
     'django.contrib.admin',
@@ -41,7 +44,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -64,32 +66,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-
 DATABASES = {
     'default': {
-        'ENGINE': config('DB_ENGINE'),
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME', 'portfolio-project-db'),
+        'USER': os.getenv('DB_USER', 'east-khan'),
+        'PASSWORD': os.getenv('DB_PASSWORD', '1234'),
+        'HOST': os.getenv('DB_HOST', 'db-portfolio'),
+        'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
 
-
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
 LANGUAGE_CODE = 'en-us'
@@ -103,13 +95,13 @@ STATIC_ROOT = '/app/staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
-EMAIL_BACKEND = config('EMAIL_BACKEND')
-EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
-EMAIL_PORT = config('EMAIL_PORT', cast=int)
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', '587'))
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
 
 
 

@@ -1,21 +1,23 @@
-# Build aşaması
-FROM node:20-alpine AS builder
-
+FROM node:20-bullseye-slim AS builder
 WORKDIR /app
 
-COPY package*.json ./
+COPY package.json package-lock.json ./
 
+# Gerekli bağımlılıkları yükle
 RUN npm install
 
+# 'serve' paketini global olarak yükle
+RUN npm i -g serve
+
+# Tüm dosyaları kopyala
 COPY . .
 
+# Frontend build işlemini yap
 RUN npm run build
 
-# Production aşaması
 FROM nginx:alpine
-
 COPY --from=builder /app/dist /usr/share/nginx/html
-
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
+COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
+CMD ["nginx","-g","daemon off;"]
+

@@ -1,66 +1,65 @@
 services:
-  backend:
+
+  db-portfolio:
+      image: postgres:15
+      environment:
+        - POSTGRES_DB=portfolio-project-db
+        - POSTGRES_USER=east-khan
+        - POSTGRES_PASSWORD=Matematik.555
+      volumes:
+        - postgres_data:/var/lib/postgresql/data
+      networks:
+        - portfolio-network
+      healthcheck:  # Yeni eklenen healthcheck
+        test: ["CMD-SHELL", "pg_isready -U east-khan -d portfolio-project-db"]
+        interval: 5s
+        timeout: 5s
+        retries: 5
+
+  backend-portfolio:
     build:
       context: ./backend
       dockerfile: Dockerfile.prod
-    container_name: backend_prod
-    ports:
-      - "8001:8001"
     env_file:
       - ./backend/.env
-    depends_on:
-      db:
-        condition: service_healthy
-    networks:
-      - app-network
     environment:
-      - PYTHONUNBUFFERED=1
-      - DEBUG=0
+      - DB_HOST=db-portfolio
+    ports:
+      - "8001:8001"
+    depends_on:
+      db-portfolio:
+        condition: service_healthy  
+    command: >
+      sh -c "python manage.py makemigrations Website api&& python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput && gunicorn backend.wsgi:application --bind 0.0.0.0:8001"
+    networks:
+      - portfolio-network
     volumes:
       - static_volume:/app/staticfiles
       - media_volume:/app/media
 
-  nginx:
+
+  frontend-portfolio:
     build:
       context: ./frontend
       dockerfile: Dockerfile.prod
-    container_name: nginx_prod
+    container_name: frontend_portfolio
     ports:
-      - "80:80"
+      - "83:80"  
     volumes:
-      - static_volume:/app/staticfiles:ro
-      - media_volume:/app/media:ro
+      - ./frontend:/app
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
     depends_on:
-      - backend
+      - backend-portfolio
     networks:
-      - app-network
+      - portfolio-network
 
-  db:
-    image: mysql:8.0  
-    container_name: mysql_db_prod
-    restart: always
-    env_file:
-    - ./backend/.env
-    environment:
-      MYSQL_DATABASE: ${DB_NAME}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-    volumes:
-      - mysql_data_prod:/var/lib/mysql 
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u${DB_USER}", "-p${DB_PASSWORD}"]
-      interval: 5s
-      timeout: 10s
-      retries: 5
-    networks:
-      - app-network
 
 networks:
-  app-network:
+  portfolio-network:
     driver: bridge
 
 volumes:
-  mysql_data_prod:
+  postgres_data:
   static_volume:
   media_volume:

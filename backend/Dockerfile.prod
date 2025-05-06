@@ -1,21 +1,26 @@
 FROM python:3.10-slim
 
+# Paketleri güncelle ve gerekli bağımlılıkları yükle
 RUN apt-get update && apt-get install -y \
-    default-libmysqlclient-dev \
+    libpq-dev \
     python3-dev \
-    pkg-config \
     gcc \
-    mariadb-client \
+    pkg-config \
+    netcat-openbsd \
     && rm -rf /var/lib/apt/lists/*
 
+# Çalışma dizinini ayarla
 WORKDIR /app
 
+# requirements.txt dosyasını kopyala
 COPY requirements.txt .
-RUN pip install --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt gunicorn
 
+# Pip'i güncelle ve gereksinimleri yükle
+RUN pip install --upgrade pip && pip install -r requirements.txt && pip install gunicorn
+
+# Diğer tüm dosyaları kopyala
 COPY . .
 
-RUN python manage.py collectstatic --noinput
+# Uygulama için portu aç
+EXPOSE 8001
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8001", "--workers", "4", "backend.wsgi:application"]
